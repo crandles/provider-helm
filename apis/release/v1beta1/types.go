@@ -93,6 +93,8 @@ type ReleaseParameters struct {
 	SkipCRDs bool `json:"skipCRDs,omitempty"`
 	// InsecureSkipTLSVerify skips tls certificate checks for the chart download
 	InsecureSkipTLSVerify bool `json:"insecureSkipTLSVerify,omitempty"`
+	// SkipUninstall skips un-installation of releases.
+	SkipUninstall bool `json:"skipUninstall,omitempty"`
 }
 
 // ReleaseObservation are the observable fields of a Release.

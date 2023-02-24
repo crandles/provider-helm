@@ -715,6 +715,9 @@ spec:
                     description: SkipCreateNamespace won't create the namespace for
                       the release. This requires the namespace to already exist.
                     type: boolean
+                  skipUninstall:
+                    description: SkipUninstall skips un-installation of releases.
+                    type: boolean
                   values:
                     type: object
                     x-kubernetes-preserve-unknown-fields: true

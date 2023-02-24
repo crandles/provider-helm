@@ -971,6 +971,20 @@ func Test_helmExternal_Delete(t *testing.T) {
 				err: nil,
 			},
 		},
+		"UninstallSkipped": {
+			args: args{
+				helm: &MockHelmClient{MockUninstall: func(release string) error {
+					return errBoom
+				},
+				},
+				mg: helmRelease(func(r *v1beta1.Release) {
+					r.Spec.ForProvider.SkipUninstall = true
+				}),
+			},
+			want: want{
+				err: nil,
+			},
+		},
 	}
 	for name, tc := range cases {
 		t.Run(name, func(t *testing.T) {

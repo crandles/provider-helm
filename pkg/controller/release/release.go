@@ -390,6 +390,10 @@ func (e *helmExternal) Delete(_ context.Context, mg resource.Managed) error {
 		return errors.New(errNotRelease)
 	}
 
+	if cr.Spec.ForProvider.SkipUninstall {
+		e.logger.Debug("Deletion skipped")
+		return nil
+	}
 	e.logger.Debug("Deleting")
 
 	return errors.Wrap(e.helm.Uninstall(meta.GetExternalName(cr)), errFailedToUninstall)
